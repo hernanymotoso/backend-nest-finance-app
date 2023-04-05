@@ -8,6 +8,7 @@ import { Transaction } from './transactions/entities/transaction.entity';
 import { Dialect } from 'sequelize';
 import { AccountsModule } from './accounts/accounts.module';
 import { Account } from './accounts/entities/account.entity';
+import { CommonModule } from './common/common.module';
 
 @Module({
   imports: [
@@ -24,11 +25,12 @@ import { Account } from './accounts/entities/account.entity';
       synchronize: true,
       sync: {
         alter: true,
-        // force: true,
+        force: true,
       },
     }),
     TransactionsModule,
     AccountsModule,
+    CommonModule,
   ],
   controllers: [AppController],
   providers: [AppService],
