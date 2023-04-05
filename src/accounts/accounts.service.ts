@@ -1,26 +1,23 @@
 import { Injectable } from '@nestjs/common';
 import { CreateAccountDto } from './dto/create-account.dto';
-import { UpdateAccountDto } from './dto/update-account.dto';
+import { Account } from './entities/account.entity';
+import { InjectModel } from '@nestjs/sequelize';
 
 @Injectable()
 export class AccountsService {
+  constructor(@InjectModel(Account) private accountModel: typeof Account) {}
+
   create(createAccountDto: CreateAccountDto) {
-    return 'This action adds a new account';
+    return this.accountModel.create(createAccountDto);
   }
 
   findAll() {
-    return `This action returns all accounts`;
+    return this.accountModel.findAll();
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} account`;
-  }
-
-  update(id: number, updateAccountDto: UpdateAccountDto) {
-    return `This action updates a #${id} account`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} account`;
+    return this.accountModel.findByPk(id, {
+      rejectOnEmpty: true,
+    });
   }
 }
