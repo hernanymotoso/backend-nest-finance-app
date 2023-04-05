@@ -1,0 +1,21 @@
+GET http://localhost:3000/transactions
+
+###
+POST http://localhost:3000/transactions
+Content-Type: application/json
+
+{
+  "payment_date": "2023-01-01",
+  "name": "Nova conta 1",
+  "description": "Description",
+  "category": "category1",
+  "amount": 20,
+  "type": "debit"
+}
+
+###
+POST http://localhost:3000/transactions
+Content-Type: application/json
+
+{
+}
