@@ -6,6 +6,7 @@ import { ConfigModule } from '@nestjs/config';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { Transaction } from './transactions/entities/transaction.entity';
 import { Dialect } from 'sequelize';
+import { AccountsModule } from './accounts/accounts.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { Dialect } from 'sequelize';
       },
     }),
     TransactionsModule,
+    AccountsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
