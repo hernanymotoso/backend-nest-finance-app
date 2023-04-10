@@ -5,7 +5,7 @@ services:
     build: .
     entrypoint: dockerize -wait tcp://db:3306 -timeout 40s ./.docker/entrypoint.sh
     ports:
-      - 3000:3000
+      - 3001:3001
     volumes:
       - .:/home/node/app
     links:
@@ -13,7 +13,7 @@ services:
     depends_on:
       - db
 
-  db: 
+  db:
     build: ./.docker/mysql
     restart: always
     tty: true
