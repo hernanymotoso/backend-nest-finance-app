@@ -15,10 +15,15 @@ services:
 
   db:
     build: ./.docker/mysql
+    command: --server-id=1 --log-bin=/var/lib/mysql/mysql-bin.log
     restart: always
     tty: true
     volumes:
       - ./.docker/dbdata:/var/lib/mysql
+    ports:
+      - 3306:3306
     environment:
       - MYSQL_DATABASE=fin
       - MYSQL_ROOT_PASSWORD=root
+    # extra_hosts:
+    #   - "host.docker.internal:172.17.0.1"
